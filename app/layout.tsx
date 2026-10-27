@@ -1,3 +1,4 @@
+import Script from 'next/script'
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Noto_Sans_KR } from 'next/font/google'
@@ -35,6 +36,19 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className="antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && !isGithubPages && <Analytics />}
+
+          <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-CQPJ588V2K"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-CQPJ588V2K');
+          `}
+        </Script>
       </body>
     </html>
   )
