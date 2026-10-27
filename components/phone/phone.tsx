@@ -23,6 +23,7 @@ import { IncomingCall } from './incoming-call'
 import { OutgoingCall } from './outgoing-call'
 import { TopNav } from './top-nav'
 import { BackNavProvider } from '@/lib/story/back-nav'
+import AdminEditor from './admin-editor'
 
 const APPS: Record<AppId, () => React.ReactNode> = {
   kakao: () => <KakaoApp />,
@@ -65,9 +66,12 @@ export function Phone() {
   return (
     <StoryProvider>
       <div className="relative h-dvh w-full overflow-hidden bg-black sm:h-[min(844px,calc(100dvh-2rem))] sm:w-[390px] sm:rounded-[48px] sm:shadow-[0_0_0_10px_#0b0b0c,0_0_0_12px_#3a3a3c,0_30px_80px_rgba(0,0,0,0.6)]">
-        <BackNavProvider>
+               <BackNavProvider>
           <Screens />
         </BackNavProvider>
+
+        <AdminEditor />
+      
       </div>
     </StoryProvider>
   )
